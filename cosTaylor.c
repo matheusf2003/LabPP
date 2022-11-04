@@ -18,5 +18,5 @@
 int main() {
     int n;
     double x;
-
+    
 }

@@ -16,7 +16,29 @@
 
 
 int main() {
-    int n;
-    double x;
-    printf("");
+  int n;
+  double x;
+  printf("%f", cos(n, x, M_PI));
+}
+
+int fat(int n){
+    if (n == 0)
+        return 1;
+    else
+        return n * fat(n-1);
+}
+
+int potencia(int a, int b){
+  if (b == 0)
+    return 1;
+  else
+    return a * potencia(a, b-1);
+}
+
+float cos(int n, double x, double pi) {
+  float c = 0.0;
+  for(int i; i <= n; i++){
+    c = c + potencia(-1, i)*(potencia(x*pi, 2*i)/(fat(2*i)));
+  }
+  return c;
 }

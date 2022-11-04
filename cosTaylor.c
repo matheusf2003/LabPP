@@ -15,12 +15,6 @@
 #define M_PI 3.141592653589793115997963468544185161590576171875
 
 
-int main() {
-  int n;
-  double x;
-  printf("%f", cos(n, x, M_PI));
-}
-
 int fat(int n){
     if (n == 0)
         return 1;
@@ -28,17 +22,27 @@ int fat(int n){
         return n * fat(n-1);
 }
 
-int potencia(int a, int b){
+double potencia(double a, int b){
   if (b == 0)
     return 1;
   else
     return a * potencia(a, b-1);
 }
 
-float cos(int n, double x, double pi) {
-  float c = 0.0;
-  for(int i; i <= n; i++){
-    c = c + potencia(-1, i)*(potencia(x*pi, 2*i)/(fat(2*i)));
+float cosseno(int n, double x) {
+  double c = 0.0;
+  for(int i = 0; i <= n; i++){
+    c = c + potencia(-1, i)*(potencia(x, 2*i)/(fat(2*i)));
   }
   return c;
+}
+
+int main() {
+  int n;
+  double x;
+  printf("Digite n: ");
+  scanf("%d", &n);
+  printf("Digite x: ");
+  scanf("%lf", &x);
+  printf("%.5lf\n", cosseno(n, x * M_PI));
 }

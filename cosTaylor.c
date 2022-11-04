@@ -16,10 +16,10 @@
 
 
 int fat(int n){
-    if (n == 0)
-        return 1;
-    else
-        return n * fat(n-1);
+  if (n == 0)
+    return 1;
+  else
+    return n * fat(n-1);
 }
 
 double potencia(double a, int b){
@@ -29,7 +29,7 @@ double potencia(double a, int b){
     return a * potencia(a, b-1);
 }
 
-float cosseno(int n, double x) {
+double cosseno(int n, double x) {
   double c = 0.0;
   for(int i = 0; i <= n; i++){
     c = c + potencia(-1, i)*(potencia(x, 2*i)/(fat(2*i)));

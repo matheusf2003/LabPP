@@ -8,14 +8,14 @@
 
 int main(){
     int n;
-    long multiplicação = 1, multiplicação1;
+    long mult = 1, mult1;
     printf("Digite um número inteiro maior que 1: ");
     scanf("%d", &n);
     for (int i=1; i <= n; i++){
-        multiplicação1 = multiplicação;
-        multiplicação = multiplicação1 * i;
+        mult1 = mult;
+        mult = mult1 * i;
     }
-    printf("%ld\n", multiplicação);
+    printf("%ld\n", mult);
 }
 
 int fat(int n){

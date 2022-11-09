@@ -10,11 +10,8 @@ int main(){
     int n, t, j=1, i=0;
     printf("Posição maxima: ");
     scanf("%d", &n);
-    for(int k=1; k <= n; k++){
+    for(int k=1; k <= n; t = i + j, i = j, j = t, k++){
         printf("%d, ", i);
-        t = i + j;
-        i = j;
-        j = t;
     }
     printf("...\n");
 }

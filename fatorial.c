@@ -15,7 +15,7 @@ int main(){
         multiplicação1 = multiplicação;
         multiplicação = multiplicação1 * i;
     }
-    printf("%ld\n", multiplicação);
+    printf("%d! = %ld\n",n , multiplicação);
 }
 
 int fat(int n){

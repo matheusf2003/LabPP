@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int n, div=0;
     printf("Digite um número inteiro positivo: ");
     scanf("%d", &n);

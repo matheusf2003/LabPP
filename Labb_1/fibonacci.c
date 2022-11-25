@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main(){
+int main(void){
     int n, t, j=1, i=0;
     printf("Posição maxima: ");
     scanf("%d", &n);

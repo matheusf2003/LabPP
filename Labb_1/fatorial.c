@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main(){
+int main(void){
     int n;
     long mult = 1, mult1;
     printf("Digite um número inteiro maior que 1: ");

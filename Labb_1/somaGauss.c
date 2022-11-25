@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main(){
+int main(void){
     int n, soma, soma1;
     printf("Digite um número maior que 1: ");
     scanf("%d", &n);

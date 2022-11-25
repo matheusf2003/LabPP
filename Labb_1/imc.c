@@ -6,7 +6,7 @@
 
 #include <stdio.h>
 
-int main(){
+int main(void){
     float peso, altura, imc;
     printf("Peso: ");
     scanf("%f", &peso);

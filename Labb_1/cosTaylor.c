@@ -37,7 +37,7 @@ double cosseno(int n, double x) {
   return c;
 }
 
-int main() {
+int main(void) {
   int n;
   double x;
   printf("Digite n: ");

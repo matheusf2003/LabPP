@@ -10,6 +10,7 @@ int primo(int n);
 
 int main (void) {
     int n1, n2, soma =0;
+    printf("Digite dois números (a b) sendo a < b: ");
     scanf("%d %d", &n1, &n2);
     for(int i = n1; i <= n2; i++)
         if(primo(i))

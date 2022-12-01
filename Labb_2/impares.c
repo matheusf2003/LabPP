@@ -8,6 +8,7 @@
 
 int main(void) {
     int n1, n2, n3;
+    printf("Digite dois números (a b) sendo a < b: ");
     scanf("%d %d", &n1, &n2);
     if (n2 % 2 ==0)
         n3 = n2-1;

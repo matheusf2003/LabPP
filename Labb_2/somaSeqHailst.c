@@ -8,6 +8,7 @@
 
 int main(void){
     int n, soma = 0;
+    printf("Digite um número inteiro positivo: ");
     scanf("%d", &n);
     soma += n;
     for(int i = 0; n != 1; i++){

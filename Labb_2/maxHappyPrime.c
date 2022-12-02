@@ -5,18 +5,22 @@
 */
 
 #include <stdio.h>
+#include <math.h>
 
 
 int casaDec(int n);
 int happyPrime(int n);
-int power(int n1,int n2);
+int primo(int n);
+int verifica(int n);
 
 int main (void) {
-    int n, total;
+    int n, maxhappyprime;
     printf("Digite um número inteiro positivo: ");
     scanf("%d", &n);
-    total = happyPrime(n);
-    printf("%d", total);
+    maxhappyprime = verifica(n);
+    printf("%d", maxhappyprime);
+    if(maxhappyprime == 0)
+        printf("***");
     return 0;
 }
 
@@ -29,16 +33,34 @@ int casaDec(int n){
 }
 
 int happyPrime(int n){
-    int total = 0, casde = casaDec(n);
-    for(int i = casde; i>0;i--){
-        total += power(n / (power(10,i)), 2);
+    int total = 0, casde = casaDec(n), n2;
+    for(int i = casde; i>0; i--){
+        n2 = n/ pow(10,i-1);
+        total += pow(n2, 2);
+        n -= n2 * pow(10,i-1);
     }
-    return total;
+    if((total>1) && (total != 4))
+        return happyPrime(total);
+    else if(total == 1)
+        return 1;
+    else
+        return 0;
 }
 
-int power(int n1,int n2){
-    int pow = 1;
-    for(int i =0; i<n2; i++)
-        pow *= n1;
-    return pow;
+int primo(int n){
+    if(n==1)
+        return 0;
+    if(n % 2 == 0 && n != 2)
+        return 0;
+    for(int i = 2; i < n / 2; i++)
+        if(n % i == 0)
+            return 0;
+    return 1;
+}
+
+int verifica(int n){
+    for(int i=n; i>0; i--)
+        if(primo(i) && happyPrime(i))
+            return i;
+    return 0;
 }

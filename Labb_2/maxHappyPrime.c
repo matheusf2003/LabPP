@@ -35,9 +35,9 @@ int casaDec(int n){
 int happyPrime(int n){
     int total = 0, casde = casaDec(n), n2;
     for(int i = casde; i>0; i--){
-        n2 = n/ pow(10,i-1);
-        total += pow(n2, 2);
-        n -= n2 * pow(10,i-1);
+        n2 = n/ (int)(pow(10,i-1)+0.5);
+        total += (int)(pow(n2, 2)+0.5);
+        n -= n2 * (int)(pow(10,i-1)+0.5);
     }
     if((total>1) && (total != 4))
         return happyPrime(total);

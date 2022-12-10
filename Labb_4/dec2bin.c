@@ -1,5 +1,5 @@
 /*
- * Arquivo: .c
+ * Arquivo: dec2bin.c
  * Data criação: 08/dez/22
  * Autor: Matheus Melo
 */

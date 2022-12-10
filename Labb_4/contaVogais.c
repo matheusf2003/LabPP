@@ -15,8 +15,6 @@ int main (void) {
     printf("Digite uma palavra: ");
     getstr(s, N);
     printf("%d\n", contaVogal(s, N));
-
-
     return 0;
 }
 

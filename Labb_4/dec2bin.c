@@ -6,31 +6,20 @@
 
 #include <stdio.h>
 
-int casaDec(unsigned int n);
-unsigned int decbin(unsigned int n, unsigned int bin, int cd);
+unsigned long long int decbin(unsigned long long int n, unsigned long long int bin);
 
 int main (void) {
-    unsigned int n, bin=0;
+    unsigned long long int n;
     printf("Digite um número decimal de no máximo 64 bits:\n");
-    scanf("%lld", &n);
-    printf("%lld", decbin(n, bin, casaDec(n)));
+    scanf("%llu", &n);
+    printf("%llu\n", decbin(n, 0));
 
     return 0;
 }
 
-unsigned int decbin(unsigned int n, unsigned int bin, int cd){
+unsigned long long int decbin(unsigned long long int n, unsigned long long int bin){
     if(n / 2 > 0){
-        bin *= 10 << cd;
-        bin += (decbin(n/2, bin, cd-1));
+        bin = bin * 10 + decbin(n/2, bin);
     }
-    printf("bin = %lld\tcd = %d\n", bin, cd);
-    return bin << cd + n%2;
-}
-
-int casaDec(unsigned int n){
-    int count = 0;
-    for(int i=1; 1;i *= 10, count++){
-        if(n/i == 0)
-            return count;
-    }
+    return bin * 10 + n % 2;
 }

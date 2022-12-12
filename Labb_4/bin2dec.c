@@ -8,31 +8,30 @@
 #include <stdlib.h>
 #define N 1024
 
-void getstr(char * str, int nchar);
-char * str2int(char * str, int nchar, char * num);
+unsigned long long getstr(char * str, int nchar);
 long long int len(char * str);
-unsigned long long int bin2dec(char * nstr, int nchar);
+void bin2dec(char * nstr, int nchar);
 
 int main(void){
     char str[N];
-    char strn[N];
-    unsigned long long int dec;
     printf("Digite um número bináraio de até 64 bits:\n");
     getstr(str, N);
-    str2int(str, len(str), strn);
-    dec = bin2dec(strn, len(strn));
-    printf("%llu\n", dec);
+    bin2dec(str, len(str));
     return 0;
 }
 
-void getstr(char * str, int nchar) {
-    char c;  int i;
+unsigned long long getstr(char * str, int nchar) {
+    char c;  int i, i2=0;
+    unsigned long long int n = 0;
     for(i = 0; i < nchar; i++) {
         c = getchar();
         if(c != '\n') {
-            str[i] = c;
+            if(c == '1' || c == '0'){
+                str[i2] = c;
+                i2++;
+            }
         } else {
-            str[i] = '\0';
+            str[i2] = '\0';
             break;
         }
     }
@@ -40,17 +39,8 @@ void getstr(char * str, int nchar) {
         str[nchar-1] = '\0';
         // limpar buffer teclado
         while ((c = getchar()) != '\n' && c != EOF);
-    } 
-}
-
-char * str2int(char * str, int nchar, char * num){
-    int n =0;
-    for(int i=0; i < nchar; i++)
-        if(str[i] >= '0' && str[i]<= '9'){
-            num[n] = str[i];
-            n += 1;
-        }
-    num[n] = '\0';
+    }
+    return n;
 }
 
 long long int len(char * str) {
@@ -59,9 +49,9 @@ long long int len(char * str) {
     return l;
 }
 
-unsigned long long int bin2dec(char * nstr, int nchar){
+void bin2dec(char * nstr, int nchar){
     unsigned long long int n = 0;
     for(int i=nchar-1, i2=0; i >= 0; i--, i2++)
         n += (nstr[i] - 48) * 1 << i2;
-    return n;
+    printf("Em decimal: %d\n", n);
 }

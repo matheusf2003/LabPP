@@ -5,7 +5,7 @@
 */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include <math.h>
 #define N 1024
 
 unsigned long long getstr(char * str, int nchar);
@@ -52,6 +52,6 @@ long long int len(char * str) {
 void bin2dec(char * nstr, int nchar){
     unsigned long long int n = 0;
     for(int i=nchar-1, i2=0; i >= 0; i--, i2++)
-        n += (nstr[i] - 48) * 1 << i2;
-    printf("Em decimal: %d\n", n);
+        n += (nstr[i] - 48) * pow(2,i2);
+    printf("%llu\n", n);
 }

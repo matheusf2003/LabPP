@@ -5,6 +5,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #define N 256
 
 
@@ -30,8 +31,14 @@ typedef struct Cadastro {
     Aniv aniv;
     Altu altu;
     Peso peso;
-    //struct Cadastro * next;
 }Cadastro;
+
+typedef
+    struct Node {
+        Cadastro pessoa;
+        struct Node * next;
+    }
+Node;
 
 const char strmes[13][4] = {
     "", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN",
@@ -43,15 +50,25 @@ long long int len(char * str);
 int cm(int x);
 Cadastro cadastrar(char * str, int nchar);
 Cadastro transforma(Cadastro pessoa, char * DATA, char * ALTU, char * PESO);
+void Node_addFront(Node ** lista, Cadastro pessoa);
+void Node_addBack(Node ** lista, Cadastro pessoa);
+void Node_print(Node * lista);
 
 
 int main(void){
+    Node * lista = NULL;
     Cadastro pessoa;
-    char str[N];
-    getstr(str, N);
-    pessoa = cadastrar(str, len(str));
-    printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", pessoa.nome.nome, pessoa.nome.snome, pessoa.aniv.dia,
-    strmes[pessoa.aniv.mes], pessoa.aniv.ano, pessoa.altu.m, cm(pessoa.altu.cm), pessoa.peso.kg, pessoa.peso.g);
+    int n;
+    scanf("%d", &n);
+    fflush(stdin);
+    for(int i = 0; i < n; i++){
+        char str[N];
+        getstr(str, N);
+        Node_addFront(&lista, cadastrar(str, len(str)));
+    }
+    Node_print(lista);
+    //printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", pessoa.nome.nome, pessoa.nome.snome, pessoa.aniv.dia,
+    //strmes[pessoa.aniv.mes], pessoa.aniv.ano, pessoa.altu.m, cm(pessoa.altu.cm), pessoa.peso.kg, pessoa.peso.g);
     return 0;
 }
 
@@ -186,4 +203,29 @@ int cm(int x) {
     if(x > 99)
         return cm(x/10);
     return x;
+}
+
+void Node_addFront(Node ** lista, Cadastro pessoa) {
+    Node * new = (Node *) malloc(sizeof(Node));
+    (*new).pessoa = pessoa;
+    (*new).next = *lista;
+    *lista = new;
+}
+
+void Node_addBack(Node ** bola, Cadastro pessoa) {
+    Node * new = (Node *) malloc(sizeof(Node));
+    Node * last;
+    (*new).pessoa = pessoa;
+    (*new).next = NULL;
+    for(Node * it = *bola; it; it = (*it).next)
+        last = it;
+    (*last).next = new;
+}
+
+void Node_print(Node * pessoa) {
+    for(Node * it = pessoa; it; it = (*it).next){
+        printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", (*it).pessoa.nome.nome, (*it).pessoa.nome.snome, (*it).pessoa.aniv.dia,
+        strmes[(*it).pessoa.aniv.mes], (*it).pessoa.aniv.ano, (*it).pessoa.altu.m, cm((*it).pessoa.altu.cm), (*it).pessoa.peso.kg, (*it).pessoa.peso.g);
+        printf("\n");
+    }
 }

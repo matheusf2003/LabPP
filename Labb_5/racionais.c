@@ -28,7 +28,6 @@ int main(void) {
     scanf("%d %d", &n2.numerador, &n2.denominador);
     n1 = simplifica(n1, mdc(n1.numerador, n1.denominador));
     n2 = simplifica(n2, mdc(n2.numerador, n2.denominador));
-    //printf("\nnumerador = %d\ndenominador = %d", n1.numerador, n1.denominador);
     adi = adicao(n1, n2);
     sub = subtracao(n1, n2);
     mult = multiplicacao(n1, n2);

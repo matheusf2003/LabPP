@@ -55,8 +55,6 @@ long long int len(char * str);
 int cm(int x);
 Cadastro cadastrar(char * str, int nchar);
 Cadastro transforma(Cadastro pessoa, char * DATA, char * ALTU, char * PESO);
-void Node_addFront(Node ** lista, Cadastro pessoa);
-void Node_addBack(Node ** lista, Cadastro pessoa);
 void Node_print(Lista * lista, int tamlis);
 
 
@@ -208,23 +206,6 @@ int cm(int x) {
     if(x > 99)
         return cm(x/10);
     return x;
-}
-
-void Node_addFront(Node ** lista, Cadastro pessoa) {
-    Node * new = (Node *) malloc(sizeof(Node));
-    (*new).pessoa = pessoa;
-    (*new).next = *lista;
-    *lista = new;
-}
-
-void Node_addBack(Node ** bola, Cadastro pessoa) {
-    Node * new = (Node *) malloc(sizeof(Node));
-    Node * last;
-    (*new).pessoa = pessoa;
-    (*new).next = NULL;
-    for(Node * it = *bola; it; it = (*it).next)
-        last = it;
-    (*last).next = new;
 }
 
 void Node_print(Lista * lista, int tamlis) {

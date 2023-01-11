@@ -40,6 +40,11 @@ typedef
     }
 Node;
 
+typedef struct Lista {
+    Cadastro pessoa;
+}Lista;
+
+
 const char strmes[13][4] = {
     "", "JAN", "FEV", "MAR", "ABR", "MAI", "JUN",
     "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"
@@ -52,21 +57,21 @@ Cadastro cadastrar(char * str, int nchar);
 Cadastro transforma(Cadastro pessoa, char * DATA, char * ALTU, char * PESO);
 void Node_addFront(Node ** lista, Cadastro pessoa);
 void Node_addBack(Node ** lista, Cadastro pessoa);
-void Node_print(Node * lista);
+void Node_print(Lista * lista, int tamlis);
 
 
 int main(void){
-    Node * lista = NULL;
     Cadastro pessoa;
     int n;
     scanf("%d", &n);
-    fflush(stdin);
+    Lista lista[n];
+    getchar();
     for(int i = 0; i < n; i++){
         char str[N];
         getstr(str, N);
-        Node_addFront(&lista, cadastrar(str, len(str)));
+        lista[i].pessoa = cadastrar(str, len(str));
     }
-    Node_print(lista);
+    Node_print(lista, n);
     //printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", pessoa.nome.nome, pessoa.nome.snome, pessoa.aniv.dia,
     //strmes[pessoa.aniv.mes], pessoa.aniv.ano, pessoa.altu.m, cm(pessoa.altu.cm), pessoa.peso.kg, pessoa.peso.g);
     return 0;
@@ -222,10 +227,10 @@ void Node_addBack(Node ** bola, Cadastro pessoa) {
     (*last).next = new;
 }
 
-void Node_print(Node * pessoa) {
-    for(Node * it = pessoa; it; it = (*it).next){
-        printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", (*it).pessoa.nome.nome, (*it).pessoa.nome.snome, (*it).pessoa.aniv.dia,
-        strmes[(*it).pessoa.aniv.mes], (*it).pessoa.aniv.ano, (*it).pessoa.altu.m, cm((*it).pessoa.altu.cm), (*it).pessoa.peso.kg, (*it).pessoa.peso.g);
+void Node_print(Lista * lista, int tamlis) {
+    for(int i = 0; i < tamlis; i++){
+        printf("%s %s; %02d%s%04d; %dm%d; %d.%dkg", lista[i].pessoa.nome.nome, lista[i].pessoa.nome.snome, lista[i].pessoa.aniv.dia,
+        strmes[lista[i].pessoa.aniv.mes], lista[i].pessoa.aniv.ano, lista[i].pessoa.altu.m, cm(lista[i].pessoa.altu.cm), lista[i].pessoa.peso.kg, lista[i].pessoa.peso.g);
         printf("\n");
     }
 }

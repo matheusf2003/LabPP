@@ -63,9 +63,8 @@ void Node_print(Lista * lista, int tamlis);
 int main(void){
     Cadastro pessoa;
     int n;
-    scanf("%d", &n);
+    scanf("%d%*c", &n);
     Lista lista[n];
-    getchar();
     for(int i = 0; i < n; i++){
         char str[N];
         getstr(str, N);

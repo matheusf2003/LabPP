@@ -26,7 +26,8 @@ int main (void) {
     vetor2 = (int *) malloc(N2*(sizeof(int)));
     resultado = (int *) malloc(N1*(sizeof(int)));
     if(soma(vetor1, N1, vetor2, N2, resultado))
-        imprime(N1, vetor1, vetor2);
+        //imprime(N1, vetor1, vetor2);
+        NULL;
     else
         printf("mensagem que não pode somar vetores");
     printf("\n");

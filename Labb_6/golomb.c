@@ -12,7 +12,7 @@ typedef
 llint; 
 
 llint golomb(int n, llint * lista);
-double media(llint * v, llint inicio, llint final);
+double media(llint * v, int inicio, int final);
 
 int main(void){
     int a, b;
@@ -41,7 +41,7 @@ llint golomb(int n, llint * lista){
     return lista[n];
 }
 
-double media(llint * v, llint inicio, llint final) {
+double media(llint * v, int inicio, int final) {
     llint m = 0;
     for(int i = inicio; i <= final; i++)
         m += v[i];

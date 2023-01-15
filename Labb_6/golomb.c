@@ -7,27 +7,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int golomb(int n, int * lista);
-double media(int * v, int inicio, int final);
+typedef
+    long long int
+llint; 
+
+llint golomb(int n, llint * lista);
+double media(llint * v, llint inicio, llint final);
 
 int main(void){
     int a, b;
-    int * lista;
+    llint * lista;
     printf("Digite o primeiro indice: ");
     scanf("%d", &a);
     printf("Digite o segundo indice: ");
     scanf("%d", &b);
     if(b < a) { int aux = a; a = b; b = aux; }
-    lista = (int *) malloc(b*sizeof(int));
+    lista = (llint *) malloc((b+1)*sizeof(llint));
     for(int i = 0; i <= b; i++)
         lista[i] = 0;
     golomb(b, lista);
-    printf("primeiro: %d\túltimo: %d\tmédia: %lg", lista[a], lista[b], media(lista, a, b));
+    printf("primeiro: %lld\túltimo: %lld\tmédia: %lg\n", lista[a], lista[b], media(lista, a, b));
     free(lista);
     return 0;
 }
 
-int golomb(int n, int * lista){
+llint golomb(int n, llint * lista){
     if(lista[n] != 0)
         return  lista[n];
     if(n == 0)
@@ -37,8 +41,8 @@ int golomb(int n, int * lista){
     return lista[n];
 }
 
-double media(int * v, int inicio, int final) {
-    int m = 0;
+double media(llint * v, llint inicio, llint final) {
+    llint m = 0;
     for(int i = inicio; i <= final; i++)
         m += v[i];
     return ((double) m)/(final - inicio + 1);

@@ -32,8 +32,6 @@ int golomb(int n, int * lista){
         return  lista[n];
     if(n == 0)
         lista[n] = 1;
-    else if(n == 1)
-        lista[n] = 2;
     else
         lista[n] = 1 + golomb(n - golomb(golomb(n - 1, lista) - 1, lista), lista);
     return lista[n];

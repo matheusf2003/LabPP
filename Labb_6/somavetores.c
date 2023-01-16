@@ -11,7 +11,7 @@
 bool soma(int * v1, int N1, int * v2, int N2, int * resultado);
 void impares(int n, int * vetor);
 void mult4(int n, int * vetor);
-void imprime(int n, int * v1, int * v2);
+void imprime(int n, int * vetor);
 
 int main (void) {
     int * vetor1;
@@ -26,10 +26,10 @@ int main (void) {
     vetor2 = (int *) malloc(N2*(sizeof(int)));
     resultado = (int *) malloc(N1*(sizeof(int)));
     if(soma(vetor1, N1, vetor2, N2, resultado))
-        //imprime(N1, vetor1, vetor2);
+        //imprime(N1, resultado);
         NULL;
     else
-        printf("mensagem que não pode somar vetores");
+        printf("não pode somar vetores");
     printf("\n");
     free(vetor1);
     free(vetor2);
@@ -42,6 +42,9 @@ bool soma(int * v1, int N1, int * v2, int N2, int * resultado){
         return false;
     impares(N1, v1);
     mult4(N2, v2);
+    for(int i = 0; i < N1; i++){
+        resultado[i] = v1[i] + v2[i];
+    }
     return true;
 }
 
@@ -57,10 +60,10 @@ void mult4(int n, int * vetor){
         vetor[i] = m;
 }
 
-void imprime(int n, int * v1, int * v2){
+void imprime(int n, int * vetor){
     for(int i = 0; i < n; i++){
-        printf("%d", v1[i] + v2[i]);
-        if(i != n-1)
+        printf("%d", vetor[i]);
+        if(i < n-1)
             printf(", ");
     }
 }
